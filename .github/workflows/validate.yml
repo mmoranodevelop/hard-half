@@ -1,0 +1,32 @@
+name: validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # A SKILL.md without name+description is invisible to `npx skills` with no
+      # error message, and a broken manifest breaks `/plugin install` for every
+      # existing user. Both fail silently in production, so they fail loudly here.
+      - name: Validate skills and plugin manifests
+        run: python3 scripts/validate_skills.py --repo-root .
+
+      # Pattern-level leak check. The term list is gitignored, so CI runs the
+      # patterns only; run the term layer locally before pushing.
+      - name: Check for leaked credentials and internal identifiers
+        run: python3 scripts/compliance_check.py --repo-root .
+
+      - name: Validate JSON manifests parse
+        run: |
+          python3 -c "import json,sys;[json.load(open(p)) for p in ['.claude-plugin/marketplace.json','.claude-plugin/plugin.json']];print('manifests parse OK')"

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin.json",
+  "name": "mmorano-skills",
+  "displayName": "mmorano skills",
+  "version": "0.1.0",
+  "description": "Skills for problems that are stuck: first-principles decomposition of problems declared impossible, plus the delivery-side disciplines (spec, integration debugging, triage, client comms).",
+  "author": {
+    "name": "Manuel Morano",
+    "url": "https://github.com/mmoranodevelop"
+  },
+  "homepage": "https://github.com/mmoranodevelop/skills",
+  "repository": "https://github.com/mmoranodevelop/skills",
+  "license": "MIT",
+  "keywords": [
+    "reasoning",
+    "first-principles",
+    "problem-solving",
+    "innovation",
+    "research",
+    "delivery",
+    "engineering"
+  ],
+  "skills": [
+    "./skills/problem-solving/first-principles"
+  ]
+}

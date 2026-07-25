@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "mmorano",
+  "description": "Reasoning and delivery skills for the half of engineering that isn't writing code",
+  "version": "0.1.0",
+  "owner": {
+    "name": "Manuel Morano",
+    "email": "m.morano.develop@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "mmorano-skills",
+      "displayName": "mmorano skills",
+      "source": "./",
+      "description": "Skills for problems that are stuck: first-principles decomposition of problems declared impossible, plus the delivery-side disciplines (spec, integration debugging, triage, client comms).",
+      "category": "productivity",
+      "tags": [
+        "reasoning",
+        "first-principles",
+        "problem-solving",
+        "research",
+        "delivery"
+      ],
+      "author": {
+        "name": "Manuel Morano"
+      },
+      "homepage": "https://github.com/mmoranodevelop/skills",
+      "repository": "https://github.com/mmoranodevelop/skills",
+      "license": "MIT"
+    }
+  ]
+}

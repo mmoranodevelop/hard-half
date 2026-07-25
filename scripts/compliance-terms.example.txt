@@ -1,0 +1,30 @@
+# Copy this file to compliance-terms.txt in the repo root (it is gitignored).
+#
+#   cp scripts/compliance-terms.example.txt compliance-terms.txt
+#
+# One term per line, case-insensitive substring match. Lines starting with #
+# are ignored. Keep the real list OUT of git: a committed list of names you
+# must not publish is itself the disclosure.
+#
+# What belongs here — the specifics that make abstract process material
+# traceable back to a real engagement:
+#
+#   - client and employer brand names, including former ones
+#   - product and project codenames used internally
+#   - interface / integration ID prefixes (e.g. the scheme your team uses to
+#     number interfaces, which reveals both the vendor and the architecture)
+#   - internal domains and subdomains
+#   - names of colleagues, managers, and client contacts
+#   - vendor account identifiers, tenant slugs, environment names
+#   - anything named in an NDA
+#
+# What does NOT belong here — generic craft is yours to publish:
+# "how to debug a 401", "how to write acceptance criteria", "how to validate a
+# data migration before running it".
+
+# --- examples, replace with your own ---
+# acme-corp
+# NorthwindRetail
+# INT-
+# internal.example.com
+# jane.doe

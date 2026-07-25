@@ -1,0 +1,33 @@
+# Local compliance term list — never commit this file.
+# It contains the client/employer names you are scanning *against*.
+compliance-terms.txt
+*.local
+
+# Private planning documents. These discuss employer context, IP boundaries and
+# launch strategy — none of which belongs in a public repository. Keep them
+# locally; they are the source material, not the product.
+plan.md
+project-status.md
+01-github-profile-e-growth.md
+notes/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Node
+node_modules/
+
+# Scratch
+scratch/
+tmp/
+*.log
