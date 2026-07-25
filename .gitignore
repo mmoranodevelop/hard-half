@@ -11,6 +11,11 @@ project-status.md
 01-github-profile-e-growth.md
 notes/
 
+# Personal working notes. Not sensitive — local-testing.md is a maintainer
+# runbook that contains absolute paths from this machine. If it ever gets
+# generalised, it belongs in CONTRIBUTING.md rather than here.
+local-testing.md
+
 # OS / editor
 .DS_Store
 Thumbs.db
