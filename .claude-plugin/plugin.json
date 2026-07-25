@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin.json",
   "name": "mmorano-skills",
   "displayName": "mmorano skills",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Skills for problems that are stuck: first-principles decomposition of problems declared impossible, and the discipline for building agent skills that actually fire. Delivery-side skills (spec, integration debugging, client comms) to follow.",
   "author": {
     "name": "Manuel Morano",
@@ -22,6 +22,7 @@
   ],
   "skills": [
     "./skills/problem-solving/first-principles",
-    "./skills/productivity/create-awesome-skills"
+    "./skills/productivity/create-awesome-skills",
+    "./skills/productivity/create-awesome-projects"
   ]
 }
