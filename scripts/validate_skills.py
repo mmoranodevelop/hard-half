@@ -7,7 +7,8 @@ invisible to the CLI, with no error.
 
 Channel B (Claude Code plugin) needs `.claude-plugin/marketplace.json` and
 `.claude-plugin/plugin.json` to be valid, and needs skills to sit at
-`skills/<name>/SKILL.md` so the default plugin scan finds them.
+`skills/<category>/<name>/SKILL.md` declared explicitly in plugin.json's `skills`
+array — the default scan does not reach into category folders.
 
 Stdlib only, so CI needs no dependency install.
 
@@ -21,6 +22,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -320,6 +322,38 @@ def validate_skill_declarations(
             )
 
 
+def validate_e2e_coverage(repo_root: Path, report: Report, skill_names: dict[str, Path]) -> None:
+    """Warn when a skill has no section in the E2E prompt library.
+
+    `local-testing-scripts.md` is gitignored, so CI never has it — the check is
+    a local-workflow nudge, not a repo-integrity rule, and is suppressed under
+    CI so it cannot become noise that trains people to ignore warnings.
+
+    The maintenance rule itself lives in AGENTS.md, which is committed, so any
+    agent in any session can rebuild the file from scratch.
+    """
+    if os.environ.get("CI"):
+        return
+
+    library = repo_root / "local-testing-scripts.md"
+    if not library.exists():
+        report.warn(
+            "local-testing-scripts.md",
+            f"missing — {len(skill_names)} skill(s) have no E2E prompts. "
+            "See AGENTS.md 'Maintenance of the E2E tests' for the template",
+        )
+        return
+
+    text = library.read_text(encoding="utf-8")
+    for name in sorted(skill_names):
+        if f"`{name}`" not in text:
+            report.warn(
+                "local-testing-scripts.md",
+                f"no section for skill '{name}' — add its must-fire prompts, "
+                "near-misses, and output checks",
+            )
+
+
 def validate_manifests(repo_root: Path, report: Report, skill_names: dict[str, Path]) -> None:
     market = load_json(repo_root / ".claude-plugin" / "marketplace.json", report)
     plugin = load_json(repo_root / ".claude-plugin" / "plugin.json", report)
@@ -392,6 +426,7 @@ def main() -> int:
         validate_skill(skill_md, repo_root, report, seen)
 
     validate_manifests(repo_root, report, seen)
+    validate_e2e_coverage(repo_root, report, seen)
 
     print(f"Validated {len(skill_files)} skill(s) in {repo_root}")
     for name in sorted(seen):

@@ -62,14 +62,16 @@ Thanks for considering it. This repo has a narrow bar, and stating it up front s
    ./scripts/link-skills.sh
    ```
 
-8. **Test it for real.** Not optional, and it's the step that separates useful skills from plausible ones:
+8. **Add its section to `local-testing-scripts.md`** — the E2E prompt library. It's gitignored, so create it if you don't have it; `AGENTS.md` carries the template and the requirements. Write the prompts *before* running them, so you're testing the skill rather than rationalising whatever it happened to do.
+
+9. **Test it for real.** Not optional, and it's the step that separates useful skills from plausible ones:
 
    - [ ] It activates when it should, on a request phrased the way a stranger would phrase it — not the way you'd phrase it
    - [ ] It does **not** activate when it shouldn't. Try three adjacent requests that a naive keyword match would catch
    - [ ] The body produces a useful output, not a description of an output
    - [ ] It works in a repository that isn't yours
 
-9. **Bump the version** in `.claude-plugin/plugin.json`. Channel B pins to that string, so users don't receive the change until it moves — an unbumped release is invisible to everyone who already installed. CI fails a pull request that touches `skills/` without moving it.
+10. **Bump the version** in `.claude-plugin/plugin.json`. Channel B pins to that string, so users don't receive the change until it moves — an unbumped release is invisible to everyone who already installed. CI fails a pull request that touches `skills/` without moving it.
 
 ## Compliance — read before your first commit
 

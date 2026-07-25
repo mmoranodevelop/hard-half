@@ -113,6 +113,25 @@ CI warns when a description contains no negative-space marker and fails when it 
 - **Every referenced file must exist.** CI fails on dangling `references/…` and `assets/…` paths, because a broken pointer sends the agent nowhere with no error.
 - **Say when the skill is the wrong tool.** Every skill should be able to conclude that and stop.
 
+## Maintenance of the E2E tests — do this without being asked
+
+**Whenever you add a skill, rename one, or materially change a `description` or a completion criterion, update `local-testing-scripts.md` in the same piece of work.** It is not a separate task and it does not wait for the user to request it.
+
+That file is the E2E prompt library: per skill, the prompts that must make it fire, the near-misses that must leave it silent, and the output checks. It is **gitignored**, so a fresh clone will not have it — **if it is missing, create it.** This rule is committed precisely so the file can be reconstructed by any agent, in any session, on any harness.
+
+What each skill's section needs — the file itself carries a copyable template at the bottom:
+
+- **A. Must fire** — 2–4 prompts, half Italian and half English, phrased as a *stranger* would: no skill name, no leading word, describing the situation rather than the request. Cover distinct branches, not synonyms of one.
+- **B. Must stay silent** — 3+ near-misses that share vocabulary or concepts with the skill but need something else. One must be the nearest neighbour, the one a keyword match would certainly catch. An obviously unrelated prompt tests nothing and is worse than no test, because it reads as coverage.
+- **C. Output quality** — a checklist derived from the skill's own completion criteria, checkable at a glance.
+- **D. Domain-specific failure** — the characteristic way *this* skill goes wrong. A reasoning skill: can it say no? A generative one: can it decline to produce? Write "none" and justify it if there isn't one.
+
+Also update the header count (`Skill coperte: n / n`) and the date.
+
+Test prompts in **both languages**. The descriptions are English; the user prompts in Italian. Cross-language matching is a real and non-obvious break point.
+
+`validate_skills.py` warns locally about a skill with no section. The check is suppressed when `CI` is set, because CI never has the file.
+
 ## Working on a skill
 
 Link every skill into the local harness directories so the working copy *is* your installed skill set — edits go live with no reinstall:

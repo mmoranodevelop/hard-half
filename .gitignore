@@ -16,6 +16,13 @@ notes/
 # generalised, it belongs in CONTRIBUTING.md rather than here.
 local-testing.md
 
+# The E2E prompt library. Kept local on purpose: published trigger prompts
+# stop being a fair test, because anyone tuning a description against them
+# is optimising for the test set rather than for real users.
+# The RULE that maintains it lives in AGENTS.md and IS committed, so any
+# agent in any session recreates this file if it is missing.
+local-testing-scripts.md
+
 # OS / editor
 .DS_Store
 Thumbs.db
