@@ -134,6 +134,7 @@ Skills are grouped by category on disk (`skills/<category>/<name>/`), so the set
 | [`first-principles`](skills/problem-solving/first-principles/SKILL.md) | `problem-solving` | Model-invoked | A problem is called impossible, a metric has been flat for years, an industry does it one way for reasons nobody can state, or a target is far from what current approaches deliver |
 | [`create-awesome-skills`](skills/productivity/create-awesome-skills/SKILL.md) | `productivity` | Model-invoked | You're writing a skill, or one you wrote never fires, fires on the wrong things, or has grown too long to read |
 | [`create-awesome-projects`](skills/productivity/create-awesome-projects/SKILL.md) | `productivity` | Model-invoked | You're starting a new project and want the folder, the structure, and the agent-facing files set up before any code exists |
+| [`signal-vs-noise`](skills/productivity/signal-vs-noise/SKILL.md) | `productivity` | Model-invoked | You have too much on, feel busy but not productive, or are about to automate something nobody has used yet |
 
 ### Inside `first-principles`
 
