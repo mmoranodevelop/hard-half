@@ -18,7 +18,9 @@ Thanks for considering it. This repo has a narrow bar, and stating it up front s
    npx skills init your-skill-name
    ```
 
-   Then move it to `skills/<category>/your-skill-name/` — pick an existing category or add one. Current: `problem-solving`.
+   Then move it to `skills/<category>/your-skill-name/` — pick an existing category or add one. Current: `problem-solving`, `productivity`.
+
+   For the craft itself — description as a routing rule, the information hierarchy, leading words, testing that it actually fires — use the [`create-awesome-skills`](skills/productivity/create-awesome-skills/SKILL.md) skill. It is the discipline this repo holds itself to.
 
    **Then add its full path to the `skills` array in `.claude-plugin/plugin.json`:**
 

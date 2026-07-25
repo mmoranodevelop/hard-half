@@ -93,9 +93,22 @@ That discipline is not new. It's how a first-principles engineer works, and it's
 
 → [`first-principles`](skills/problem-solving/first-principles/SKILL.md)
 
-### Why only one skill
+### "I wrote a skill and the agent never uses it"
 
-Because six mediocre skills is worse than one that works, and twenty is worse than six. A repo you can evaluate in three minutes gets installed. A repo that makes you choose from a menu of things you can't assess gets closed.
+> "The best modules are those whose interfaces are much simpler than their implementations."
+> — John Ousterhout, *A Philosophy of Software Design*
+
+**The problem.** You wrote the skill. It's good — the instructions are right, you'd follow them yourself. The agent ignores it. So you make the description punchier, and now it fires on everything, including the three tasks it has no business touching. You turn it off.
+
+The failure was never in the body. A skill is a deep module, and the `description` is its interface: almost every system decides whether to activate a skill from that field alone. It isn't a title — **it's a routing rule**, doing most of the technical work in a file where most people spend the least of their time. The other half of the failure is that nobody writes the *anti*-triggers, and a skill that fires on the wrong task costs more trust than one that never fires at all.
+
+**The fix.** Treat the description as the artifact: three parts, written before the body, with the nearest neighbours excluded by name. Put depth behind pointers so the body stays legible. Delete every line the model already obeys. Then actually test it — one trigger phrased the way a stranger would phrase it, and the **three nearest** requests that must stay silent.
+
+→ [`create-awesome-skills`](skills/productivity/create-awesome-skills/SKILL.md)
+
+### Why so few skills
+
+Because six mediocre skills is worse than two that work, and twenty is worse than six. A repo you can evaluate in three minutes gets installed. A repo that makes you choose from a menu of things you can't assess gets closed.
 
 The next three failure modes are already scoped, and each ships when it has been used on real work — not before:
 
@@ -119,6 +132,7 @@ Skills are grouped by category on disk (`skills/<category>/<name>/`), so the set
 | Skill | Category | Type | Use it when |
 |---|---|---|---|
 | [`first-principles`](skills/problem-solving/first-principles/SKILL.md) | `problem-solving` | Model-invoked | A problem is called impossible, a metric has been flat for years, an industry does it one way for reasons nobody can state, or a target is far from what current approaches deliver |
+| [`create-awesome-skills`](skills/productivity/create-awesome-skills/SKILL.md) | `productivity` | Model-invoked | You're writing a skill, or one you wrote never fires, fires on the wrong things, or has grown too long to read |
 
 ### Inside `first-principles`
 

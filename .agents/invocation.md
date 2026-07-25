@@ -40,6 +40,7 @@ Reuse is **not** the test. Reuse is why you extract a skill at all; it says noth
 | Skill | Kind | Why |
 |---|---|---|
 | `first-principles` | Model-invoked | Reusable discipline. A user describing a stuck problem often does not know this protocol exists — the value depends on the agent reaching for it unprompted. Its own triage section handles the cost of firing when it shouldn't. |
+| `create-awesome-skills` | Model-invoked | "Write me a skill that…" is an unambiguous trigger, and the whole point is that the discipline gets applied without the user having to know it exists. The upstream skill it derives from is user-invoked; that choice buys zero context load at the cost of remembering it — a trade that makes sense in a set of twenty user-invoked skills, less so here. |
 
 ## Composition
 
