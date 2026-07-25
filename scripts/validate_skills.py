@@ -33,7 +33,17 @@ BODY_LINE_WARN = 500
 # Descriptions do the routing. Anything this short cannot carry
 # what-it-does + when-to-use + when-NOT-to-use.
 DESCRIPTION_MIN_CHARS = 120
-DESCRIPTION_MAX_CHARS = 2000
+
+# Hard limit: `description` + `when_to_use` are truncated at 1536 chars combined
+# in the skill listing. Truncation is silent and cuts from the end — which is
+# where the "NOT for…" clause lives, so what gets lost is exactly the part that
+# prevents spurious activation. Treated as an error, not a style warning.
+DESCRIPTION_MAX_CHARS = 1536
+
+# Past this, there is little room left to add a `when_to_use` field later.
+# Set high enough that a healthy, fully-specified description does not trip it —
+# a warning that fires on every run is a warning nobody reads.
+DESCRIPTION_WARN_CHARS = 1400
 
 NAME_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 
@@ -154,15 +164,29 @@ def validate_skill(skill_md: Path, repo_root: Path, report: Report, seen: dict[s
     if not description:
         report.error(where, "frontmatter is missing required field 'description'")
     else:
-        n = len(description)
-        if n < DESCRIPTION_MIN_CHARS:
+        # The listing budget is description + when_to_use combined.
+        when_to_use = strip_quotes(fm.get("when_to_use", "")).strip()
+        n = len(description) + len(when_to_use)
+        budget = "description" if not when_to_use else "description + when_to_use"
+
+        if len(description) < DESCRIPTION_MIN_CHARS:
             report.error(
                 where,
-                f"description is {n} chars — under {DESCRIPTION_MIN_CHARS} it cannot state "
-                "what it does, when to use it, and when NOT to, so routing will be unreliable",
+                f"description is {len(description)} chars — under {DESCRIPTION_MIN_CHARS} it cannot "
+                "state what it does, when to use it, and when NOT to, so routing will be unreliable",
             )
         if n > DESCRIPTION_MAX_CHARS:
-            report.warn(where, f"description is {n} chars, over the {DESCRIPTION_MAX_CHARS} soft cap")
+            report.error(
+                where,
+                f"{budget} is {n} chars, over the {DESCRIPTION_MAX_CHARS} listing limit — the "
+                "overflow is silently truncated, and the tail is where the 'NOT for…' clause lives",
+            )
+        elif n > DESCRIPTION_WARN_CHARS:
+            report.warn(
+                where,
+                f"{budget} is {n} of {DESCRIPTION_MAX_CHARS} chars — "
+                f"only {DESCRIPTION_MAX_CHARS - n} left before silent truncation",
+            )
         low = description.lower()
         if not any(m in low for m in NEGATIVE_SPACE_MARKERS):
             report.warn(
@@ -198,6 +222,27 @@ def validate_skill(skill_md: Path, repo_root: Path, report: Report, seen: dict[s
     for ref in re.findall(r"(?:references|assets|scripts)/[A-Za-z0-9_./-]+\.[A-Za-z0-9]+", body):
         if not (skill_md.parent / ref).exists():
             report.error(where, f"references a bundled file that does not exist: {ref}")
+
+    # Cross-harness metadata. Channel A installs into Codex and other
+    # Agent-Skills harnesses too; without this the skill appears there as a bare
+    # slug with no description.
+    openai_yaml = skill_md.parent / "agents" / "openai.yaml"
+    if not openai_yaml.exists():
+        report.warn(
+            where,
+            "no agents/openai.yaml — the skill will show in Codex with no display name "
+            "or short description",
+        )
+    else:
+        yaml_text = openai_yaml.read_text(encoding="utf-8")
+        for required in ("display_name", "short_description"):
+            if required not in yaml_text:
+                report.warn(f"{where} (agents/openai.yaml)", f"missing interface.{required}")
+
+        # Not checked here: that `disable-model-invocation` in SKILL.md agrees
+        # with `policy.allow_implicit_invocation` in this file. Keeping the two
+        # in sync is a documented rule (.agents/invocation.md), enforced by
+        # review rather than by CI.
 
 
 def load_json(path: Path, report: Report) -> dict | None:

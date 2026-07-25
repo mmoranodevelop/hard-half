@@ -17,16 +17,25 @@ Both read the same `skills/` directory. Anything that breaks one channel silentl
 .claude-plugin/
   marketplace.json      # channel B catalog — must be at repo root
   plugin.json           # plugin manifest; the repo root IS the plugin (source "./")
+.agents/
+  invocation.md         # user-invoked vs model-invoked, and how each harness enforces it
+  adr/                  # why the repo is shaped this way — read before "fixing" it
+.out-of-scope/          # deliberately rejected, so it isn't re-litigated
 skills/
   <category>/           # problem-solving, delivery, comms, …
+    README.md           # the bucket index, grouped by invocation
     <skill-name>/
       SKILL.md          # required
+      agents/
+        openai.yaml     # Codex display metadata — cross-harness
       references/       # optional, loaded on demand
       assets/           # optional, used in output
       scripts/          # optional, executed without being read into context
-scripts/                # repo tooling (validation, compliance) — not shipped as a skill
+scripts/                # repo tooling — not shipped as a skill
 .github/workflows/
 ```
+
+`AGENTS.md` and `CLAUDE.md` load every session, so they stay short and link out. Depth lives in `.agents/` — the same progressive-disclosure trick the skills use, applied to the repo's own meta-work.
 
 **Skills live at exactly `skills/<category>/<name>/SKILL.md`.**
 
@@ -54,6 +63,34 @@ description: >-
 
 `name` must equal the directory name. If they diverge, the skill resolves under different identifiers on the two channels.
 
+**The description has a hard budget: `description` + `when_to_use` are truncated at 1,536 characters combined** in the skill listing. The cut is silent and takes from the end — which is where the "NOT for…" clause lives, so truncation removes exactly the part that prevents spurious activation. Put the key use case first. CI fails above the limit and warns from 1,200 so there is room to add `when_to_use` later.
+
+Optional fields worth knowing — `disable-model-invocation`, `user-invocable`, `when_to_use`, `allowed-tools`, `model`, `effort`, `context: fork` — are covered in [`.agents/invocation.md`](./.agents/invocation.md).
+
+## Invocation mode
+
+Every skill is model-invoked (default, add nothing) or user-invoked. User-invoked needs **both** harnesses set, or the skill behaves differently depending on where it is installed:
+
+```yaml
+disable-model-invocation: true          # SKILL.md — Claude Code
+```
+```yaml
+policy:
+  allow_implicit_invocation: false      # agents/openai.yaml — Codex
+```
+
+The test, the doctrine, and the composition rule are in [`.agents/invocation.md`](./.agents/invocation.md). CI does not check the two agree — that one is on review.
+
+## `agents/openai.yaml`
+
+Every skill carries one. Channel A installs into Codex and other Agent-Skills harnesses, where without it the skill appears as a bare slug with no description:
+
+```yaml
+interface:
+  display_name: "First Principles"
+  short_description: "Rebuild a stuck problem up from its invariants"
+```
+
 ## Writing a `description`
 
 The description is the routing rule. Most systems decide whether to activate a skill primarily from it, so it does 70% of the technical work and deserves more time than the body.
@@ -76,6 +113,16 @@ CI warns when a description contains no negative-space marker and fails when it 
 - **Every referenced file must exist.** CI fails on dangling `references/…` and `assets/…` paths, because a broken pointer sends the agent nowhere with no error.
 - **Say when the skill is the wrong tool.** Every skill should be able to conclude that and stop.
 
+## Working on a skill
+
+Link every skill into the local harness directories so the working copy *is* your installed skill set — edits go live with no reinstall:
+
+```bash
+./scripts/link-skills.sh
+```
+
+Re-run after adding, renaming, or removing a skill. This is what makes it practical to use a skill on real work while writing it, which is the one test that separates useful skills from plausible ones.
+
 ## Before committing
 
 ```bash
@@ -84,6 +131,10 @@ python3 scripts/validate_skills.py --repo-root .
 
 ```bash
 python3 scripts/compliance_check.py --repo-root .
+```
+
+```bash
+claude plugin validate . --strict
 ```
 
 Both run in CI. The second one matters more than it looks: this repo turns delivery experience into public material, so the characteristic failure is publishing a client name or an internal identifier — and git history preserves it after deletion. Run the term layer locally (see `CONTRIBUTING.md`); CI can only run the pattern layer, because the term list is deliberately gitignored.

@@ -1,24 +1,22 @@
 ---
 name: first-principles
 description: >-
-  Attack a problem that is stuck — one where every known approach has been tried,
-  where the accepted answer is "impossible with current technology", or where the
-  cost, physics, or scale numbers refuse to work. Decomposes the problem to its
-  invariants (what physics, mathematics, and law actually require), classifies why
-  it is called impossible, computes the theoretical floor those invariants imply,
-  measures the gap between that floor and today's best solution, rebuilds candidate
-  solutions upward from the floor, then red-teams each one and names the cheapest
-  experiment that would kill it. Use whenever the user says something can't be
-  done, cites a theorem or a law of physics as a wall, reports a metric that has
-  been plateaued for years, describes an industry that all does it one way for
-  reasons nobody can state, has a cost or performance target far from what current
-  approaches deliver, or explicitly asks for first-principles, from-scratch,
-  ground-up, or out-of-the-box thinking on a hard enterprise, business, or
-  scientific problem — including R&D strategy, unit-economics that don't close,
-  and research programs that have stalled. NOT for problems that only need
-  implementing, debugging, or a known best practice applied: using it there burns
-  enormous effort re-deriving what is already settled. NOT a substitute for domain
-  data — it tells you what must be measured, it does not invent measurements.
+  Attack a problem that is stuck — every known approach tried, the accepted answer
+  is "impossible with current technology", or the cost, physics, or scale numbers
+  refuse to work. Decomposes the problem to its invariants, classifies why it is
+  called impossible, computes the theoretical floor those invariants imply,
+  measures the gap to today's best solution, rebuilds candidates upward from that
+  floor, then red-teams each and names the cheapest experiment that would kill it.
+  Use whenever the user says something can't be done, cites a theorem or law of
+  physics as a wall, reports a metric plateaued for years, describes an industry
+  that all does it one way for reasons nobody can state, has a cost or performance
+  target far from what current approaches deliver, or asks for first-principles,
+  from-scratch, ground-up, or out-of-the-box thinking on a hard enterprise,
+  business, or scientific problem — including R&D strategy, unit economics that
+  don't close, and stalled research programs. NOT for problems that only need
+  implementing, debugging, or a known best practice applied: it burns enormous
+  effort re-deriving what is already settled. NOT a substitute for domain data —
+  it says what must be measured, it does not invent measurements.
 license: MIT
 ---
 

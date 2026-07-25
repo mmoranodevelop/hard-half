@@ -32,20 +32,42 @@ Thanks for considering it. This repo has a narrow bar, and stating it up front s
 
 3. **Write the body.** Under ~500 lines. Depth goes in `references/`, which loads only when the body directs the agent there. Explain the reasoning behind instructions rather than issuing commands — rules that carry their why survive situations you didn't imagine.
 
-4. **Validate:**
+4. **Add `agents/openai.yaml`** beside the `SKILL.md`. Channel A installs into Codex and other harnesses, where without it your skill is a bare slug with no description:
+
+   ```yaml
+   interface:
+     display_name: "Your Skill"
+     short_description: "One line, sentence case, no trailing period"
+   ```
+
+   If the skill is user-invoked, it also needs `policy.allow_implicit_invocation: false` here *and* `disable-model-invocation: true` in the frontmatter — both, or the skill behaves differently per harness. See [`.agents/invocation.md`](.agents/invocation.md).
+
+5. **Add it to the bucket `README.md`** at `skills/<category>/README.md`, under the right invocation heading.
+
+6. **Validate:**
 
    ```bash
    python3 scripts/validate_skills.py --repo-root .
    ```
 
-5. **Test it for real.** Not optional, and it's the step that separates useful skills from plausible ones:
+   ```bash
+   claude plugin validate . --strict
+   ```
+
+7. **Link it locally and use it**, so the edit loop is instant:
+
+   ```bash
+   ./scripts/link-skills.sh
+   ```
+
+8. **Test it for real.** Not optional, and it's the step that separates useful skills from plausible ones:
 
    - [ ] It activates when it should, on a request phrased the way a stranger would phrase it — not the way you'd phrase it
    - [ ] It does **not** activate when it shouldn't. Try three adjacent requests that a naive keyword match would catch
    - [ ] The body produces a useful output, not a description of an output
    - [ ] It works in a repository that isn't yours
 
-6. **Bump the version** in `.claude-plugin/plugin.json`. Channel B pins to that string, so users don't receive the change until it moves.
+9. **Bump the version** in `.claude-plugin/plugin.json`. Channel B pins to that string, so users don't receive the change until it moves — an unbumped release is invisible to everyone who already installed. CI fails a pull request that touches `skills/` without moving it.
 
 ## Compliance — read before your first commit
 

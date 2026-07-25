@@ -11,22 +11,52 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # the version-sync check diffs against the base commit
 
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
       # A SKILL.md without name+description is invisible to `npx skills` with no
-      # error message, and a broken manifest breaks `/plugin install` for every
-      # existing user. Both fail silently in production, so they fail loudly here.
+      # error message; an undeclared skill is invisible to plugin users with no
+      # error message; a broken manifest breaks `/plugin install` for everyone.
+      # All three fail silently in production, so they fail loudly here.
       - name: Validate skills and plugin manifests
         run: python3 scripts/validate_skills.py --repo-root .
 
-      # Pattern-level leak check. The term list is gitignored, so CI runs the
-      # patterns only; run the term layer locally before pushing.
+      # Pattern-level leak check. The term list is gitignored (see
+      # .agents/adr/0003), so CI runs the patterns only; the term layer is the
+      # contributor's responsibility before pushing.
       - name: Check for leaked credentials and internal identifiers
         run: python3 scripts/compliance_check.py --repo-root .
 
-      - name: Validate JSON manifests parse
+      # Channel B shows users an update only when plugin.json's `version` string
+      # changes. Ship a skill change without bumping it and existing installs
+      # silently keep the old copy forever.
+      - name: Require a version bump when skills change
+        if: github.event_name == 'pull_request'
         run: |
-          python3 -c "import json,sys;[json.load(open(p)) for p in ['.claude-plugin/marketplace.json','.claude-plugin/plugin.json']];print('manifests parse OK')"
+          base="${{ github.event.pull_request.base.sha }}"
+          if git diff --quiet "$base" HEAD -- skills/ .claude-plugin/; then
+            echo "No skill or manifest changes — version bump not required."
+            exit 0
+          fi
+          old=$(git show "$base:.claude-plugin/plugin.json" \
+                | python3 -c "import json,sys; print(json.load(sys.stdin).get('version',''))")
+          new=$(python3 -c "import json; print(json.load(open('.claude-plugin/plugin.json')).get('version',''))")
+          if [ "$old" = "$new" ]; then
+            echo "::error file=.claude-plugin/plugin.json::skills/ changed but version is still '$new'. Plugin users will never receive this change — bump it."
+            exit 1
+          fi
+          echo "Version bumped: $old -> $new"
+
+      # The official validator. Informational: it needs the Claude Code CLI, and
+      # a failure to install it must not block a change that our own checks pass.
+      # Run it locally before pushing — that is where it earns its keep.
+      - name: claude plugin validate (informational)
+        continue-on-error: true
+        run: |
+          npm install -g @anthropic-ai/claude-code >/dev/null 2>&1 || {
+            echo "Claude Code CLI unavailable — skipping."; exit 0; }
+          claude plugin validate . --strict
