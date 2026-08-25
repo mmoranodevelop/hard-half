@@ -5,13 +5,15 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.png">
-  <img alt="Skills That Matter" src="assets/banner-light.png">
+  <img alt="The Hard Half" src="assets/banner-light.png">
 </picture>
 -->
 
-# Skills for problems where the standard answer is why you're stuck
+# The Hard Half
 
-[![skills.sh](https://skills.sh/b/mmoranodevelop/skills-that-matter)](https://skills.sh/mmoranodevelop/skills-that-matter)
+### Skills for problems where the standard answer is why you're stuck
+
+[![skills.sh](https://skills.sh/b/mmoranodevelop/hard-half)](https://skills.sh/mmoranodevelop/hard-half)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Ask a coding agent a hard question and it will give you the consensus answer. That is what it is good at — consensus is what its training data is dense in, and most of the time consensus is exactly what you want.
@@ -41,32 +43,32 @@ The second enemy is softer and more expensive: **AI-assisted work that accelerat
 ### Channel A — `skills` CLI (works with ~45 agents)
 
 ```bash
-npx skills@latest add mmoranodevelop/skills-that-matter
+npx skills@latest add mmoranodevelop/hard-half
 ```
 
 It detects the agents you have installed and writes the skills into each one's directory. Preview first without installing:
 
 ```bash
-npx skills@latest add mmoranodevelop/skills-that-matter --list
+npx skills@latest add mmoranodevelop/hard-half --list
 ```
 
 Install everything, everywhere, without prompts:
 
 ```bash
-npx skills@latest add mmoranodevelop/skills-that-matter --all
+npx skills@latest add mmoranodevelop/hard-half --all
 ```
 
 ### Channel B — Claude Code plugin
 
 ```bash
-claude plugin marketplace add mmoranodevelop/skills-that-matter
+claude plugin marketplace add mmoranodevelop/hard-half
 ```
 
 ```bash
-claude plugin install skills-that-matter@skills-that-matter
+claude plugin install hard-half@hard-half
 ```
 
-Or from inside Claude Code: `/plugin marketplace add mmoranodevelop/skills-that-matter` then `/plugin install skills-that-matter@skills-that-matter`.
+Or from inside Claude Code: `/plugin marketplace add mmoranodevelop/hard-half` then `/plugin install hard-half@hard-half`.
 
 ### Which channel
 
@@ -78,7 +80,7 @@ They are not redundant — they are two different relationships with the code.
 | **What happens** | Files are **copied** into your project | A **managed bundle** is installed |
 | **Editing** | Yours. Fork it, rewrite it, delete half of it | Read-only, always current |
 | **Updates** | `npx skills update` when you want them | Automatic |
-| **Invocation** | `/first-principles` | `/skills-that-matter:first-principles` |
+| **Invocation** | `/first-principles` | `/hard-half:first-principles` |
 | **Choose it when** | You want these as a starting point for your own | You want them to just work and stay updated |
 
 Channel A is for people who will make them theirs. Channel B is for people who want to subscribe rather than fork. Both are supported deliberately.

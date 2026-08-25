@@ -20,7 +20,7 @@ Each skill needs its own full path. There is no glob, no category-level include,
 
 **Flattening the tree** (`skills/<name>/`) to satisfy the default scan. It works, and it throws away the organisation for a problem that has a supported solution. This was the first implementation and it was wrong.
 
-**Adding a categorised skill and forgetting the array entry.** The skill is valid. It passes frontmatter checks. `npx skills add` installs it, because channel A searches recursively and does not care. And it is **absent for every channel-B user, with no error emitted anywhere** — not at build, not at install, not at runtime. Nobody finds out until someone asks why `/skills-that-matter:the-skill` does not exist.
+**Adding a categorised skill and forgetting the array entry.** The skill is valid. It passes frontmatter checks. `npx skills add` installs it, because channel A searches recursively and does not care. And it is **absent for every channel-B user, with no error emitted anywhere** — not at build, not at install, not at runtime. Nobody finds out until someone asks why `/hard-half:the-skill` does not exist.
 
 ## Decision
 

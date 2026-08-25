@@ -1,8 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin.json",
-  "name": "skills-that-matter",
-  "displayName": "Skills That Matter",
-  "version": "0.5.0",
+  "name": "hard-half",
+  "displayName": "The Hard Half",
+  "version": "0.6.0",
   "description": "Skills for problems that are stuck: first-principles decomposition of problems declared impossible, and the discipline for building agent skills that actually fire. Delivery-side skills (spec, integration debugging, client comms) to follow.",
   "author": {
     "name": "Manuel Morano",

@@ -102,8 +102,8 @@ Two habits that matter more than the tooling:
 
 Treat these as immutable once published:
 
-- The plugin slug `skills-that-matter` — users installed with it; renaming breaks them with *plugin-not-found*. Use `displayName` for the UI label.
-- The marketplace name `skills-that-matter`.
+- The plugin slug `hard-half` — users installed with it; renaming breaks them with *plugin-not-found*. Use `displayName` for the UI label.
+- The marketplace name `hard-half`.
 - Any skill's `name`, which is also its invocation path.
 
 ## Reporting a problem
