@@ -5,13 +5,13 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.png">
-  <img alt="mmorano skills" src="assets/banner-light.png">
+  <img alt="Skills That Matter" src="assets/banner-light.png">
 </picture>
 -->
 
 # Skills for problems where the standard answer is why you're stuck
 
-[![skills.sh](https://skills.sh/b/mmoranodevelop/skills)](https://skills.sh/mmoranodevelop/skills)
+[![skills.sh](https://skills.sh/b/mmoranodevelop/skills-that-matter)](https://skills.sh/mmoranodevelop/skills-that-matter)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Ask a coding agent a hard question and it will give you the consensus answer. That is what it is good at — consensus is what its training data is dense in, and most of the time consensus is exactly what you want.
@@ -38,29 +38,35 @@ The second enemy is softer and more expensive: **AI-assisted work that accelerat
 
 ## Quickstart
 
-### Channel A — `skills` CLI (any agent)
+### Channel A — `skills` CLI (works with ~45 agents)
 
 ```bash
-npx skills@latest add mmoranodevelop/skills
+npx skills@latest add mmoranodevelop/skills-that-matter
 ```
 
-Preview without installing:
+It detects the agents you have installed and writes the skills into each one's directory. Preview first without installing:
 
 ```bash
-npx skills@latest add mmoranodevelop/skills --list
+npx skills@latest add mmoranodevelop/skills-that-matter --list
+```
+
+Install everything, everywhere, without prompts:
+
+```bash
+npx skills@latest add mmoranodevelop/skills-that-matter --all
 ```
 
 ### Channel B — Claude Code plugin
 
 ```bash
-claude plugin marketplace add mmoranodevelop/skills
+claude plugin marketplace add mmoranodevelop/skills-that-matter
 ```
 
 ```bash
-claude plugin install mmorano-skills@mmorano
+claude plugin install skills-that-matter@skills-that-matter
 ```
 
-Or from inside Claude Code: `/plugin marketplace add mmoranodevelop/skills` then `/plugin install mmorano-skills@mmorano`.
+Or from inside Claude Code: `/plugin marketplace add mmoranodevelop/skills-that-matter` then `/plugin install skills-that-matter@skills-that-matter`.
 
 ### Which channel
 
@@ -68,13 +74,22 @@ They are not redundant — they are two different relationships with the code.
 
 | | Channel A (`skills` CLI) | Channel B (Claude Code plugin) |
 |---|---|---|
+| **Works with** | ~45 agents | Claude Code only |
 | **What happens** | Files are **copied** into your project | A **managed bundle** is installed |
 | **Editing** | Yours. Fork it, rewrite it, delete half of it | Read-only, always current |
-| **Updates** | You pull them when you want | Automatic |
-| **Invocation** | `/first-principles` | `/mmorano-skills:first-principles` |
+| **Updates** | `npx skills update` when you want them | Automatic |
+| **Invocation** | `/first-principles` | `/skills-that-matter:first-principles` |
 | **Choose it when** | You want these as a starting point for your own | You want them to just work and stay updated |
 
 Channel A is for people who will make them theirs. Channel B is for people who want to subscribe rather than fork. Both are supported deliberately.
+
+### Where these run
+
+These follow the [Agent Skills](https://agentskills.io) open standard — a `SKILL.md` carrying `name` and `description`, with optional `references/`, `assets/`, and `scripts/`. Any tool implementing the standard can load them, and [a lot of them do](https://agentskills.io/clients): Claude Code and the Claude apps, ChatGPT and Codex, Cursor, GitHub Copilot and VS Code, Gemini CLI, Amp, OpenCode, Goose, Kiro, Roo Code, Factory, Letta, JetBrains Junie, Mistral Vibe, and others.
+
+**Worth knowing before you go looking for a store: Claude Code is the only one that has one.** Every other harness is directory-based — it scans a folder and loads whatever `SKILL.md` files it finds. `~/.agents/skills/` (user) and `.agents/skills/` (project) are the convergent cross-vendor paths, and they are where the `skills` CLI writes.
+
+So "is it available on the Cursor store" is the wrong question everywhere except Claude Code. The right one is whether the files land in the directory that harness reads — which is Channel A's whole job.
 
 ## Why these skills exist
 

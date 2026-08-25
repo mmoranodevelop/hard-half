@@ -8,11 +8,11 @@ The obvious one, and the one the original plan specified:
 
 ```
 .claude-plugin/marketplace.json
-plugins/mmorano-skills/.claude-plugin/plugin.json
+plugins/skills-that-matter/.claude-plugin/plugin.json
 skills/<category>/<name>/SKILL.md
 ```
 
-This does not work. The plugin's root would be `plugins/mmorano-skills/`, so reaching the skills means `../../skills/` — and **every plugin path field must be relative to the plugin root and start with `./`**. There is no supported way to point a plugin at a directory above itself.
+This does not work. The plugin's root would be `plugins/skills-that-matter/`, so reaching the skills means `../../skills/` — and **every plugin path field must be relative to the plugin root and start with `./`**. There is no supported way to point a plugin at a directory above itself.
 
 The failure is quiet: the manifest is valid, the plugin installs, and it contains no skills.
 
@@ -28,7 +28,7 @@ skills/                # reachable from the plugin root as ./skills/...
 ```
 
 ```json
-{ "name": "mmorano-skills", "source": "./" }
+{ "name": "skills-that-matter", "source": "./" }
 ```
 
 One tree, one source of truth, reachable by both channels. This is a documented pattern, not a workaround, and it is what [`mattpocock/skills`](https://github.com/mattpocock/skills) does.

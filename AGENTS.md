@@ -6,7 +6,7 @@ Rules that apply to any agent working in this repository. These are conventions 
 
 A public catalog of agent skills, distributed through two independent channels:
 
-- **Channel A** — the `skills` CLI (`npx skills add mmoranodevelop/skills`), which copies files into a user's project.
+- **Channel A** — the `skills` CLI (`npx skills add mmoranodevelop/skills-that-matter`), which copies files into a user's project.
 - **Channel B** — a Claude Code plugin marketplace, which installs a managed read-only bundle.
 
 Both read the same `skills/` directory. Anything that breaks one channel silently breaks half the distribution, so the structural rules below are not negotiable.
@@ -160,8 +160,8 @@ Both run in CI. The second one matters more than it looks: this repo turns deliv
 
 ## Things that will break users
 
-- **Renaming the plugin.** `mmorano-skills` is an immutable public slug. Users installed with it; changing it breaks their installation with *plugin-not-found*. Change `displayName` instead.
-- **Renaming the marketplace.** Same reasoning for `mmorano`.
+- **Renaming the plugin.** `skills-that-matter` is an immutable public slug. Users installed with it; changing it breaks their installation with *plugin-not-found*. Change `displayName` instead.
+- **Renaming the marketplace.** Same reasoning for `skills-that-matter`.
 - **Renaming a skill.** Same again — the invocation path changes.
 - **Adding `CLAUDE.md` inside the plugin.** Not a recognized plugin component; it is silently ignored. Instructions ship as skills.
 - **Adding a skill without listing it in `plugin.json`'s `skills` array.** It ships to nobody on channel B, silently. CI catches this.

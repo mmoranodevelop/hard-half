@@ -5,7 +5,8 @@ set -euo pipefail
 #
 # Symlinks every shipped skill into the local harness skill directories:
 #   ~/.claude/skills  — Claude Code
-#   ~/.agents/skills  — Codex and other Agent-Skills harnesses
+#   ~/.agents/skills  — the convergent cross-vendor path: Codex, Cursor, and
+#                       the rest of the Agent-Skills ecosystem read it
 #
 # The point is the edit loop. Each entry is a symlink into this working copy, so
 # a change to a SKILL.md is live immediately — no reinstall, no copy step. That

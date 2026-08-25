@@ -8,9 +8,9 @@ Shared vocabulary for this repository. When a term appears in a `SKILL.md`, it m
 
 **Channel A** — the `skills` CLI (`npx skills add owner/repo`). The registry is GitHub itself, not npm: `owner/repo` maps directly onto the repository. Nothing is published to a package registry. Files are **copied** into the user's project, so the user owns and may edit them.
 
-**Channel B** — the Claude Code plugin marketplace. `.claude-plugin/marketplace.json` at the repo root catalogs plugins; `.claude-plugin/plugin.json` declares this one. Installs a **managed, read-only, always-current** bundle. Skills are namespaced: `/mmorano-skills:first-principles`.
+**Channel B** — the Claude Code plugin marketplace. `.claude-plugin/marketplace.json` at the repo root catalogs plugins; `.claude-plugin/plugin.json` declares this one. Installs a **managed, read-only, always-current** bundle. Skills are namespaced: `/skills-that-matter:first-principles`.
 
-**Immutable slug** — a public identifier users install with (`mmorano-skills`, `mmorano`, and each skill's `name`). Changing one breaks existing installations. `displayName` is the mutable label.
+**Immutable slug** — a public identifier users install with. Three of them: the marketplace name and the plugin name (both `skills-that-matter`), and each skill's `name`. Changing one breaks existing installations with *plugin-not-found* or a dead invocation path. `displayName` is the mutable label — change that instead.
 
 **Category** — the folder grouping skills on disk: `skills/<category>/<name>/`. Organisational only; it carries no meaning to either channel and does not appear in invocation.
 
