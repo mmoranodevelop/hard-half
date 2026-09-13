@@ -1,0 +1,8 @@
+# Exception: [metric]
+Colour: red / yellow    Owner: [name]    Date: [YYYY-MM-DD]
+Standard / plan: [named threshold]
+What happened: [this period vs plan vs prior vs last year]
+Cause or unknown: [one sentence — no speculation]
+ASK: [verb + object] by [date]
+If we do nothing: [cost this period / next]
+Follow-up sitting: [WBR / MBR / memo / gate] on [date]

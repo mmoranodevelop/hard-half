@@ -1,0 +1,9 @@
+# Codex and other Agent-Skills harnesses read this for skill-picker metadata.
+# Channel A (`npx skills add`) installs into those harnesses too, so without it
+# the skill shows up as a bare slug with no description.
+#
+# No `policy` block: cobra-equilibrium is model-invoked in both harnesses.
+# See ../../../../.agents/invocation.md
+interface:
+  display_name: "Cobra Equilibrium"
+  short_description: "Write how the measured system will eat the metric, then survive or refuse"

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="152" height="20" role="img" aria-label="skills.sh: hard-half">
+  <title>skills.sh: hard-half</title>
+  <rect width="152" height="20" rx="3" fill="#111318"/>
+  <rect x="66" width="86" height="20" rx="3" fill="#FF4F32"/>
+  <rect x="66" width="6" height="20" fill="#FF4F32"/>
+  <text x="33" y="14" text-anchor="middle" fill="#F5F3EE" font-family="ui-sans-serif, system-ui, sans-serif" font-size="11">skills.sh</text>
+  <text x="109" y="14" text-anchor="middle" fill="#F5F3EE" font-family="ui-sans-serif, system-ui, sans-serif" font-size="11">hard-half</text>
+</svg>

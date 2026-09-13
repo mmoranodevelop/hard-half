@@ -1,0 +1,41 @@
+# Empty overlay template — copy to instances/<identity_key>/overlays/<overlay_id>.yaml
+# Delta on core. Only fields that change.
+schema_version: 1
+kind: overlay
+blueprint_id: "<identity_key>.<overlay_id>.v1"
+identity_key: ""
+overlay_id: ""                   # e.g. email-professional-it
+extends: "<identity_key>.core.v1"
+version: 1
+status: draft
+lang: [it]
+created_at: ""
+updated_at: ""
+
+match:
+  audiences: []                  # colleague | friend | board | public | customer
+  channels: []                   # email | chat | doc | social
+  doc_types: []                  # request | follow-up | decline | thanks | memo | post
+  default_for: false             # true on exactly one overlay per lang+channel
+
+relationship_register:
+  formality: null                # override or null to inherit
+  warmth: null
+  directness: null
+  humor: null
+  address_form: null
+  address_form_caps_lei: null
+
+mechanics:
+  emoji:
+    default: null
+  punctuation:
+    exclamation: null
+
+greetings: []
+signoffs: []
+extra_bans: []
+do: []
+do_not: []
+example_pairs: []
+notes: ""

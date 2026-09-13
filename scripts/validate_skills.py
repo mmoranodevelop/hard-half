@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Validate the repo against both distribution channels.
 
-Channel A (`npx skills add mmoranodevelop/skills`) needs every SKILL.md to carry
+Channel A (`npx skills add mmoranodevelop/hard-half`) needs every SKILL.md to carry
 `name` and `description` in YAML frontmatter — without them the skill is simply
 invisible to the CLI, with no error.
 
@@ -9,6 +9,9 @@ Channel B (Claude Code plugin) needs `.claude-plugin/marketplace.json` and
 `.claude-plugin/plugin.json` to be valid, and needs skills to sit at
 `skills/<category>/<name>/SKILL.md` declared explicitly in plugin.json's `skills`
 array — the default scan does not reach into category folders.
+
+The skills.sh repo page is display-only and reads `skills.sh.json` at the
+repo root. Every shipped skill must appear in exactly one grouping.
 
 Stdlib only, so CI needs no dependency install.
 
@@ -354,6 +357,83 @@ def validate_e2e_coverage(repo_root: Path, report: Report, skill_names: dict[str
             )
 
 
+def validate_skills_sh(repo_root: Path, report: Report, skill_names: dict[str, Path]) -> None:
+    """skills.sh.json groups the repo page on skills.sh. Display only.
+
+    It does not change CLI installs or SKILL.md contents. Without it, the
+    page falls back to an installs-sorted dump — unreadable at this catalog
+    size. skills.sh ignores unknown slugs and parks unlisted ones in
+    "Other skills"; both are treated as errors so the page stays curated.
+    """
+    data = load_json(repo_root / "skills.sh.json", report)
+    if data is None:
+        return
+
+    groupings = data.get("groupings")
+    if not isinstance(groupings, list) or not groupings:
+        report.error("skills.sh.json", "'groupings' must be a non-empty array")
+        return
+
+    not_grouped = data.get("notGrouped", "bottom")
+    if not_grouped not in ("top", "bottom"):
+        report.error(
+            "skills.sh.json",
+            f"notGrouped must be 'top' or 'bottom', got {not_grouped!r}",
+        )
+
+    if len(groupings) > 50:
+        report.warn("skills.sh.json", f"{len(groupings)} groups — skills.sh only uses the first 50")
+
+    shipped = {
+        name
+        for name, rel in skill_names.items()
+        if len(rel.parts) > 1 and rel.parts[1] not in UNSHIPPED_CATEGORIES
+    }
+
+    listed: dict[str, str] = {}
+    for i, group in enumerate(groupings):
+        label = f"skills.sh.json[{i}]"
+        if not isinstance(group, dict):
+            report.error(label, "group must be an object")
+            continue
+        title = group.get("title")
+        if not isinstance(title, str) or not title.strip():
+            report.error(label, "group needs a non-empty title")
+            title = f"group-{i}"
+        description = group.get("description")
+        if description is not None and (
+            not isinstance(description, str) or len(description) > 500
+        ):
+            report.error(label, "description must be a string of at most 500 characters")
+        skills = group.get("skills")
+        if not isinstance(skills, list) or not skills:
+            report.error(label, "group needs a non-empty skills array")
+            continue
+        if len(skills) > 500:
+            report.warn(label, f"{len(skills)} skills — skills.sh only uses the first 500")
+        for slug in skills:
+            if not isinstance(slug, str) or not slug.strip():
+                report.error(label, f"invalid skill slug: {slug!r}")
+                continue
+            key = slug.strip().lower().replace(" ", "-").replace("_", "-")
+            if key in listed:
+                report.error(
+                    label,
+                    f"skill '{slug}' is already in '{listed[key]}' — first group wins on skills.sh",
+                )
+                continue
+            listed[key] = title
+            if key not in shipped:
+                report.error(label, f"skill '{slug}' is not a shipped skill in this repo")
+
+    for name in sorted(shipped):
+        if name not in listed:
+            report.error(
+                "skills.sh.json",
+                f"shipped skill '{name}' is not in any grouping — it will appear under Other skills",
+            )
+
+
 def validate_manifests(repo_root: Path, report: Report, skill_names: dict[str, Path]) -> None:
     market = load_json(repo_root / ".claude-plugin" / "marketplace.json", report)
     plugin = load_json(repo_root / ".claude-plugin" / "plugin.json", report)
@@ -426,6 +506,7 @@ def main() -> int:
         validate_skill(skill_md, repo_root, report, seen)
 
     validate_manifests(repo_root, report, seen)
+    validate_skills_sh(repo_root, report, seen)
     validate_e2e_coverage(repo_root, report, seen)
 
     print(f"Validated {len(skill_files)} skill(s) in {repo_root}")

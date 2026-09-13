@@ -1,0 +1,9 @@
+# Codex and other Agent-Skills harnesses read this for skill-picker metadata.
+# Channel A (`npx skills add`) installs into those harnesses too, so without it
+# the skill shows up as a bare slug with no description.
+#
+# No `policy` block: this skill is model-invoked in both harnesses.
+# See ../../../../.agents/invocation.md
+interface:
+  display_name: "Competitive Teardown"
+  short_description: "Use when tearing down a named rival to decide our move: where they play, how they win,"

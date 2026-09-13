@@ -1,0 +1,34 @@
+# ASK Rail — default carousel kit.
+# Silhouette: full-height accent rail, newsprint field, sharp printed page.
+# Forbidden (another creator's silhouette): dot grid, top-centre mark,
+# rounded app cards, blob shadows, coloured keywords in the headline,
+# iOS/dialog chrome, two accent hues.
+id: ask-rail
+name: ASK Rail
+mode: light
+field: "#E8E2D4"
+rail: "#C4122E"
+rail_width_px: 80
+ink: "#0A0A0A"
+paper: "#F7F4EC"
+muted: "#5C574E"
+accent: "#C4122E"
+display: "Inter Display Bold"
+body: "Inter Regular"
+mark: "ASK set vertically in the rail, white, tracking open. Not a logo at top-centre."
+lockup_name: "YOUR NAME · ROLE"
+lockup_place: "right of rail, bottom, ink, 18px"
+folio: "{n} / {total}"
+folio_place: "inside rail, bottom, white, 14px"
+margin_left_px: 112
+margin_other_px: 56
+headline_top_px: 88
+object_band: "lower 50%"
+headline_color: "ink only — never colour a word in the headline"
+accent_use: "rail, stamps, redaction bars, wood-type numbers. Not headline spans."
+shadow: "hard print offset 10px 10px ink, 0 blur. Never Gaussian blob."
+radius: 0
+photo_policy: "user-supplied only; never generate a likeness"
+notes: >
+  If a slide would still look like a floating UI on dotted paper after
+  you swap the object, it fails. The rail must be visible at feed size.

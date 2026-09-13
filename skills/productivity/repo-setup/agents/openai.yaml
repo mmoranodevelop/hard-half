@@ -1,0 +1,12 @@
+# Codex and other Agent-Skills harnesses read this for skill-picker metadata.
+# Channel A (`npx skills add`) installs into those harnesses too, so without it
+# the skill shows up as a bare slug with no description.
+#
+# User-invoked in both harnesses — keep this in lockstep with
+# `disable-model-invocation: true` in SKILL.md.
+# See ../../../../.agents/invocation.md
+interface:
+  display_name: "Repo Setup"
+  short_description: "Configure artifact paths and categories for this repo"
+policy:
+  allow_implicit_invocation: false

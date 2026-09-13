@@ -4,12 +4,13 @@ Rules that apply to any agent working in this repository. These are conventions 
 
 ## What this repo is
 
-A public catalog of agent skills, distributed through two independent channels:
+A public catalog of agent skills, distributed through three independent channels that read the same `skills/` tree:
 
 - **Channel A** — the `skills` CLI (`npx skills add mmoranodevelop/hard-half`), which copies files into a user's project.
-- **Channel B** — a Claude Code plugin marketplace, which installs a managed read-only bundle.
+- **Channel B** — a Claude Code plugin marketplace (`.claude-plugin/`), which installs a managed read-only bundle.
+- **Channel C** — a Codex / ChatGPT plugin marketplace (`.agents/plugins/marketplace.json` + `.codex-plugin/plugin.json`). Codex also accepts the Claude marketplace as a legacy catalog.
 
-Both read the same `skills/` directory. Anything that breaks one channel silently breaks half the distribution, so the structural rules below are not negotiable.
+All three read the same `skills/` directory. Anything that breaks one channel silently breaks a third of the distribution, so the structural rules below are not negotiable.
 
 ## Structure
 
@@ -17,8 +18,12 @@ Both read the same `skills/` directory. Anything that breaks one channel silentl
 .claude-plugin/
   marketplace.json      # channel B catalog — must be at repo root
   plugin.json           # plugin manifest; the repo root IS the plugin (source "./")
+.codex-plugin/
+  plugin.json           # channel C — Codex / ChatGPT plugin identity
+skills.sh.json          # skills.sh repo page groupings — display only, not install
 .agents/
   invocation.md         # user-invoked vs model-invoked, and how each harness enforces it
+  plugins/marketplace.json # channel C catalog (Codex also reads the Claude one)
   adr/                  # why the repo is shaped this way — read before "fixing" it
 .out-of-scope/          # deliberately rejected, so it isn't re-litigated
 skills/
@@ -165,6 +170,7 @@ Both run in CI. The second one matters more than it looks: this repo turns deliv
 - **Renaming a skill.** Same again — the invocation path changes.
 - **Adding `CLAUDE.md` inside the plugin.** Not a recognized plugin component; it is silently ignored. Instructions ship as skills.
 - **Adding a skill without listing it in `plugin.json`'s `skills` array.** It ships to nobody on channel B, silently. CI catches this.
+- **Adding a skill without listing its slug in `skills.sh.json`.** The CLI still installs it; the skills.sh repo page dumps it into "Other skills". CI catches this.
 - **Nesting deeper than `skills/<category>/<name>/`.** Two levels is the contract; the validator enforces it.
 - **Declaring components in both `plugin.json` and the marketplace entry.** With `strict: true` (the default) that is a conflict and the plugin fails to load. Components are declared in `plugin.json` only.
 
@@ -174,4 +180,4 @@ Client and employer brand names, internal endpoints and hostnames, data schemas,
 
 Write skills in the abstract from the first draft. Anonymizing afterwards is slower than writing it right, and it leaves traces in the history.
 
-Planning documents (`plan.md` and similar) are gitignored on purpose — they contain employer context and launch strategy. Do not add them to git.
+Planning documents at the repo root (`/plan.md` and similar) are gitignored on purpose — they contain employer context and launch strategy. Do not add them to git. Do not write a bare `plan.md` rule: it hides skill assets.

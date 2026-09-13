@@ -37,7 +37,7 @@ Requests turned down **on their merits** — the change is understood and not wa
 
 Not this folder:
 
-- **Not yet built** → the roadmap table in `README.md`
+- **Not yet built** → an issue, or a new skill via `CONTRIBUTING.md`
 - **A decision about how something is built** → `.agents/adr/`
 - **A bug** → an issue
 

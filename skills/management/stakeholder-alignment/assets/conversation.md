@@ -1,0 +1,11 @@
+Person: [name]
+Role: [ ]
+Power / interest now: key player | keep satisfied | keep informed | monitor
+What they currently believe: [ ]
+What they must believe: [ ]
+Currency (theirs): inspiration | task | position | relationship | personal — specifically: [ ]
+ASK (one sentence): [ ]
+Evidence we can put on the table: [ ]
+Who has the conversation / by when: [ ] / [YYYY-MM-DD]
+What "yes" looks like (observable): [ ]
+If no: escalate to named D / change the plan / stop — [which]

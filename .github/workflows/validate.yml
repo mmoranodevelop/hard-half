@@ -33,12 +33,14 @@ jobs:
 
       # Channel B shows users an update only when plugin.json's `version` string
       # changes. Ship a skill change without bumping it and existing installs
-      # silently keep the old copy forever.
+      # silently keep the old copy forever. The Codex manifest carries the same
+      # version (validate_skills.py checks the three agree), so a change there
+      # counts too.
       - name: Require a version bump when skills change
         if: github.event_name == 'pull_request'
         run: |
           base="${{ github.event.pull_request.base.sha }}"
-          if git diff --quiet "$base" HEAD -- skills/ .claude-plugin/; then
+          if git diff --quiet "$base" HEAD -- skills/ .claude-plugin/ .codex-plugin/ .agents/plugins/; then
             echo "No skill or manifest changes — version bump not required."
             exit 0
           fi

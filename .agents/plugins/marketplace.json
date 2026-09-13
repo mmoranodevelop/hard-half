@@ -1,0 +1,23 @@
+{
+  "name": "hard-half",
+  "interface": {
+    "displayName": "The Hard Half"
+  },
+  "plugins": [
+    {
+      "name": "hard-half",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity",
+      "interface": {
+        "displayName": "The Hard Half"
+      }
+    }
+  ]
+}

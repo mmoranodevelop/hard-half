@@ -1,8 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
   "name": "hard-half",
-  "description": "Reasoning and delivery skills for the half of engineering that isn't writing code",
-  "version": "0.6.0",
+  "description": "Skills for the hard half of professional work \u2014 the half that isn't writing code",
+  "version": "1.0.0",
   "owner": {
     "name": "Manuel Morano",
     "email": "m.morano.develop@gmail.com"
@@ -12,21 +12,21 @@
       "name": "hard-half",
       "displayName": "The Hard Half",
       "source": "./",
-      "description": "Skills for problems that are stuck: first-principles decomposition of problems declared impossible, and the discipline for building agent skills that actually fire. Delivery-side skills (spec, integration debugging, client comms) to follow.",
+      "description": "Skills for the hard half of professional work: the decisions, delivery, communication, and judgment that writing code never was. First-principles attack on stuck problems, plus the operating disciplines for strategy, deals, accounts, projects, and rooms that decide.",
       "category": "productivity",
       "tags": [
         "reasoning",
-        "first-principles",
-        "problem-solving",
-        "skill-authoring",
-        "research",
-        "delivery"
+        "delivery",
+        "strategy",
+        "management",
+        "comms",
+        "operating-system"
       ],
       "author": {
         "name": "Manuel Morano"
       },
-      "homepage": "https://github.com/mmoranodevelop/skills",
-      "repository": "https://github.com/mmoranodevelop/skills",
+      "homepage": "https://github.com/mmoranodevelop/hard-half",
+      "repository": "https://github.com/mmoranodevelop/hard-half",
       "license": "MIT"
     }
   ]

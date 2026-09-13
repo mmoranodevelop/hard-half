@@ -10,6 +10,10 @@ Shared vocabulary for this repository. When a term appears in a `SKILL.md`, it m
 
 **Channel B** — the Claude Code plugin marketplace. `.claude-plugin/marketplace.json` at the repo root catalogs plugins; `.claude-plugin/plugin.json` declares this one. Installs a **managed, read-only, always-current** bundle. Skills are namespaced: `/hard-half:first-principles`.
 
+**Channel C** — the Codex / ChatGPT plugin marketplace. `.agents/plugins/marketplace.json` catalogs the plugin; `.codex-plugin/plugin.json` is the Codex identity. Codex also accepts the Claude marketplace as a legacy catalog. Users add it with `codex plugin marketplace add mmoranodevelop/hard-half`.
+
+**skills.sh page** — the public catalog listing at `skills.sh/owner/repo`. Groupings live in `skills.sh.json` at the repo root. Display only: it does not change how the CLI installs. skills.sh reads the file after an install with telemetry enabled, not when someone visits the page.
+
 **Immutable slug** — a public identifier users install with. Three of them: the marketplace name and the plugin name (both `hard-half`), and each skill's `name`. Changing one breaks existing installations with *plugin-not-found* or a dead invocation path. `displayName` is the mutable label — change that instead.
 
 **Category** — the folder grouping skills on disk: `skills/<category>/<name>/`. Organisational only; it carries no meaning to either channel and does not appear in invocation.
@@ -61,3 +65,35 @@ Used across the reasoning skills, `first-principles` in particular.
 **Named gap** — a quantity that is needed and not available, written down with its plausible range and where it could be obtained. Always preferable to a fabricated number, which poisons everything downstream.
 
 **Impossible as posed** — a legitimate, valuable output: a Class-A wall with no available premise attack, delivered together with the nearby objective that is not blocked.
+
+## Value
+
+Used by `value-problem-solver`.
+
+**Filter** — one of seven screens value must pass (real problem, efficacy, validation, communication, access, sustainability, integrity). Not a phase: failing one is not rescued by excellence on another. Three of them multiply (relevance × efficacy × adoption).
+
+**Net value** — benefit minus every cost, including costs dumped on people who are not in the room and on the future. Gross benefit presented alone is a transfer or an extraction until the subtraction is on the page.
+
+**Guardrail veto** — one of seven rules that stop a run rather than scoring it. Hidden harm, fake consent, irreversibility, misaligned incentives, the headline test, the ten-year test, and a proxy that no longer tracks wellbeing. A veto is not a deduction.
+
+**Claim lock** — the official statement and acceptance criterion of one hard claim, written so a stranger can score yes/no. Used by `verified-hard-problem`. A nearby variant is not the lock.
+
+**Nearby ≠ official** — a related or weakened statement may be attacked under its own id. It must not be announced as the prize / statutory / official claim.
+
+**Dual deliverable** — human-auditable writeup plus machine-checkable artifact (or an explicit hole). Prose that looks right is never verification. A kernel pass is not definition fidelity.
+
+**Verification gate** — named independent checker, artifact, timebox. "Solved" is forbidden until the gate is planned.
+
+**Ghost** — a stated problem whose perfect solution would not change a named person's Monday, or whose death is implied by solving a parent. Used by `ghost-problem`. Load-bearing is the opposite verdict.
+
+**Cobra** — post-adaptation equilibrium of an instrument: the number is healthy and the intent is dead. Used by `cobra-equilibrium`. Distinct from a red queen (an opponent with their own payoff).
+
+**Empty AND** — the smallest set of locally-satisfiable constraints whose intersection has no element. Used by `empty-and`. A Gantt of greens is not a proof of nonempty.
+
+**Red queen** — a player who updates when you move; your fix has a half-life. Used by `red-queen`. Distinct from cobra (the measured population becomes the instrument).
+
+**Missing axis** — a measurable coordinate the current search space does not have, so incumbent options are collinear. Used by `missing-axis`. A theme without a unit is not an axis.
+
+**Schema bind** — pairing a tracker-agnostic ticket slot (client, type, size, surfaces, dates) to a live field id and a native option id. Used by `client-ticket`. A display label is not a value.
+
+**Ticket contract** — the structured payload `client-ticket` fills before any adapter writes. ClickUp, Jira, Asana, and Linear only bind and create; they do not own the contract.

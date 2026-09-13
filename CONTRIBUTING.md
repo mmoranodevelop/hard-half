@@ -18,9 +18,9 @@ Thanks for considering it. This repo has a narrow bar, and stating it up front s
    npx skills init your-skill-name
    ```
 
-   Then move it to `skills/<category>/your-skill-name/` — pick an existing category or add one. Current: `problem-solving`, `productivity`.
+   Then move it to `skills/<category>/your-skill-name/` — pick an existing category or add one. Current: `accounts`, `branding`, `commercial`, `comms`, `delivery`, `documents`, `finance`, `learning`, `m-and-a`, `management`, `problem-solving`, `productivity`, `project`, `strategy`, `writing`.
 
-   For the craft itself — description as a routing rule, the information hierarchy, leading words, testing that it actually fires — use the [`create-awesome-skills`](skills/productivity/create-awesome-skills/SKILL.md) skill. It is the discipline this repo holds itself to.
+   For the craft itself — description as a routing rule, the information hierarchy, leading words, testing that it actually fires — use the [`create-skill`](skills/productivity/create-skill/SKILL.md) skill. It is the discipline this repo holds itself to.
 
    **Then add its full path to the `skills` array in `.claude-plugin/plugin.json`:**
 
@@ -45,6 +45,8 @@ Thanks for considering it. This repo has a narrow bar, and stating it up front s
    If the skill is user-invoked, it also needs `policy.allow_implicit_invocation: false` here *and* `disable-model-invocation: true` in the frontmatter — both, or the skill behaves differently per harness. See [`.agents/invocation.md`](.agents/invocation.md).
 
 5. **Add it to the bucket `README.md`** at `skills/<category>/README.md`, under the right invocation heading.
+
+   Add the skill slug to the matching group in [`skills.sh.json`](skills.sh.json) at the repo root. That file only changes how the catalog appears on [skills.sh](https://www.skills.sh/docs/customize) — not how the CLI installs. Skip it and the skill lands in "Other skills".
 
 6. **Validate:**
 

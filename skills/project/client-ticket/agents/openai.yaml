@@ -1,0 +1,10 @@
+# Codex and other Agent-Skills harnesses read this for skill-picker metadata.
+# Channel A (`npx skills add`) installs into those harnesses too, so without it
+# the skill shows up as a bare slug with no description.
+#
+# No `policy` block: client-ticket is model-invoked in both harnesses.
+# The write gate (preview before create) is in the body — same pattern as
+# create-project. See ../../../../.agents/invocation.md
+interface:
+  display_name: "Client Ticket"
+  short_description: "File a client request into the live tracker schema — fields, list, checklists"

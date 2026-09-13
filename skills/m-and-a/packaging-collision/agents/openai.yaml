@@ -1,0 +1,9 @@
+# Codex and other Agent-Skills harnesses read this for skill-picker metadata.
+# Channel A (`npx skills add`) installs into those harnesses too, so without it
+# the skill shows up as a bare slug with no description.
+#
+# No `policy` block: this skill is model-invoked in both harnesses.
+# See ../../../../.agents/invocation.md
+interface:
+  display_name: "Packaging Collision"
+  short_description: "Use after a close when two price lists meet: map every collision, freeze quotes,"

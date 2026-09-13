@@ -1,0 +1,317 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Problem solving",
+      "description": "Stuck problems, wrong problems, gamed metrics, unsolved claims.",
+      "skills": [
+        "cobra-equilibrium",
+        "empty-and",
+        "first-principles",
+        "ghost-problem",
+        "missing-axis",
+        "red-queen",
+        "value-problem-solver",
+        "verified-hard-problem"
+      ]
+    },
+    {
+      "title": "Productivity",
+      "description": "Find a skill, write a skill, or run the week's operating loop.",
+      "skills": [
+        "calendar-audit",
+        "commitment-register",
+        "create-project",
+        "create-skill",
+        "find-skill",
+        "repo-setup",
+        "signal-vs-noise",
+        "weekly-cadence",
+        "wip-limit"
+      ]
+    },
+    {
+      "title": "Project",
+      "description": "Charter to close: status, tickets, go-live.",
+      "skills": [
+        "acceptance-signoff",
+        "assumption-log",
+        "benefits-realization",
+        "budget-baseline",
+        "change-control",
+        "client-ticket",
+        "contingency-reserve",
+        "critical-path",
+        "cutover-plan",
+        "decision-log",
+        "dependency-unblock",
+        "eac-pulse",
+        "estimate-confidence",
+        "go-live-readiness",
+        "ims-rollup",
+        "interdependency-map",
+        "issue-escalate",
+        "kickoff-pack",
+        "lessons-register",
+        "milestone-burn",
+        "ops-handover",
+        "phase-gate",
+        "pmo-cadence",
+        "program-roadmap",
+        "project-charter",
+        "project-close",
+        "project-health",
+        "quality-dod",
+        "raci-delivery",
+        "recovery-plan",
+        "schedule-crash",
+        "scope-baseline",
+        "sponsor-brief",
+        "sponsor-status",
+        "steering-pack",
+        "vendor-milestone",
+        "vendor-orchestration",
+        "weekly-status"
+      ]
+    },
+    {
+      "title": "Management",
+      "description": "Board, people, RAID, operating rhythm.",
+      "skills": [
+        "after-action-review",
+        "ai-ops-policy",
+        "board-calendar",
+        "budget-variance",
+        "cash-runway",
+        "change-adoption",
+        "comp-band-decision",
+        "cyber-incident-brief",
+        "data-residency",
+        "decision-meeting",
+        "decision-rights",
+        "director-onboarding",
+        "executive-board-memo",
+        "headcount-plan",
+        "hiring-scorecard",
+        "incentive-plan",
+        "integration-100",
+        "litigation-reserve",
+        "one-on-one",
+        "operating-review",
+        "org-one-pager",
+        "portfolio-stage-gate",
+        "pre-mortem",
+        "program-charter",
+        "qbr",
+        "raid-register",
+        "skip-level",
+        "span-of-control",
+        "stakeholder-alignment",
+        "succession-slate",
+        "vendor-scorecard",
+        "vendor-sow"
+      ]
+    },
+    {
+      "title": "Strategy",
+      "description": "Case, price, market, kill criteria.",
+      "skills": [
+        "business-case",
+        "capital-allocation",
+        "competitive-teardown",
+        "customer-concentration",
+        "discount-exception",
+        "experiment-brief",
+        "fundraising-one-pager",
+        "issue-tree",
+        "jobs-to-be-done",
+        "kill-criteria",
+        "loi-screen",
+        "make-vs-buy",
+        "margin-bridge",
+        "market-entry",
+        "okr-cascade",
+        "partner-memo",
+        "pr-faq",
+        "pricing-one-pager",
+        "product-sunset",
+        "scenario-planning",
+        "term-sheet-read",
+        "unit-economics",
+        "win-loss"
+      ]
+    },
+    {
+      "title": "Accounts",
+      "description": "Named accounts, renewal, save.",
+      "skills": [
+        "account-handoff",
+        "account-health",
+        "account-plan",
+        "book-of-business",
+        "churn-save",
+        "client-escalation",
+        "expansion-whitespace",
+        "mutual-action-plan",
+        "renewal-risk",
+        "value-realization"
+      ]
+    },
+    {
+      "title": "Commercial",
+      "description": "Bid, desk, forecast, channel.",
+      "skills": [
+        "bid-no-bid",
+        "channel-conflict",
+        "cohort-retention",
+        "deal-desk",
+        "exec-sponsor-live",
+        "forecast-call",
+        "nrr-bridge",
+        "partner-exit",
+        "reference-ask"
+      ]
+    },
+    {
+      "title": "Comms",
+      "description": "Rooms that decide — spoken and written.",
+      "skills": [
+        "analyst-brief",
+        "board-spoken",
+        "cascade-script",
+        "champion-coach",
+        "close-ask",
+        "customer-ceo-letter",
+        "demo-narrative",
+        "discovery-call",
+        "economic-buyer",
+        "follow-up-48h",
+        "hostile-room",
+        "intro-ask",
+        "investor-spoken",
+        "negotiation-trades",
+        "objection-map",
+        "pre-read",
+        "proof-story",
+        "proposal-narrative",
+        "room-narrative",
+        "stakeholder-message-map"
+      ]
+    },
+    {
+      "title": "Delivery",
+      "description": "Capacity, SLA, launch, leakage.",
+      "skills": [
+        "capacity-demand",
+        "deprecation-notice",
+        "e2e-manual-test-list",
+        "launch-brief",
+        "rate-card",
+        "resource-collision",
+        "severity-customer",
+        "sla-credit",
+        "staffing-mix",
+        "unbilled-leakage",
+        "utilization-bench"
+      ]
+    },
+    {
+      "title": "Finance",
+      "description": "Cash, close, capital.",
+      "skills": [
+        "cap-table",
+        "close-calendar",
+        "covenant-compliance",
+        "data-reconciliation",
+        "decision-debt",
+        "follow-on",
+        "insurance-renewal",
+        "pe-monthly-flash",
+        "reforecast",
+        "working-capital"
+      ]
+    },
+    {
+      "title": "Documents",
+      "description": "PRD, proposal, deck, workbook.",
+      "skills": [
+        "battle-card",
+        "consulting-deck",
+        "document-kit",
+        "finance-workbook",
+        "prd-spec",
+        "research-paper",
+        "sales-datasheet",
+        "sales-proposal",
+        "solution-brief",
+        "trust-pack",
+        "value-eng"
+      ]
+    },
+    {
+      "title": "Writing",
+      "description": "Voice, memo, conversation.",
+      "skills": [
+        "all-hands",
+        "board-qa-prep",
+        "crisis-holding",
+        "difficult-conversation",
+        "investor-update",
+        "meeting-notes-to-decisions",
+        "offer-conversation",
+        "principal-brief",
+        "pyramid-principle",
+        "voice-blueprint"
+      ]
+    },
+    {
+      "title": "Branding",
+      "description": "Bio, positioning, editorial calendar.",
+      "skills": [
+        "bio-pack",
+        "editorial-calendar",
+        "positioning-house",
+        "social-carousel",
+        "thought-leadership-thesis"
+      ]
+    },
+    {
+      "title": "Learning",
+      "description": "Turn a source into a method.",
+      "skills": [
+        "competence-to-skill",
+        "decision-journal",
+        "ninety-day-onboarding",
+        "source-to-competence",
+        "team-method-transfer"
+      ]
+    },
+    {
+      "title": "M&A",
+      "description": "Day-1, TSA, talent, brand after close.",
+      "skills": [
+        "acquired-org-onboard",
+        "brand-architecture-deal",
+        "contract-novation",
+        "control-handover",
+        "culture-fault-lines",
+        "day1-continuity",
+        "day1-employee-pack",
+        "flight-risk-90",
+        "imo-charter",
+        "joint-roadmap-q1",
+        "key-talent-slate",
+        "leadership-day1",
+        "named-account-day1",
+        "operating-model-choice",
+        "packaging-collision",
+        "portfolio-keep-kill",
+        "stack-decision",
+        "synergy-tracker",
+        "title-grade-map",
+        "tsa-schedule"
+      ]
+    }
+  ]
+}

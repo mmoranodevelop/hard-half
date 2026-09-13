@@ -1,0 +1,10 @@
+# Codex and other Agent-Skills harnesses read this for skill-picker metadata.
+# Channel A (`npx skills add`) installs into those harnesses too, so without it
+# the skill shows up as a bare slug with no description.
+#
+# No `policy` block: find-skill is model-invoked in both harnesses.
+# A spurious activation produces a recommendation, not a write.
+# See ../../../../.agents/invocation.md
+interface:
+  display_name: "Find Skill"
+  short_description: "Find the skill that owns the job, or name the gap"

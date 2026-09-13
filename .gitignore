@@ -1,27 +1,43 @@
 # Local compliance term list — never commit this file.
 # It contains the client/employer names you are scanning *against*.
-compliance-terms.txt
+# Anchored at repo root so a skill asset can still be named this.
+/compliance-terms.txt
 *.local
 
 # Private planning documents. These discuss employer context, IP boundaries and
 # launch strategy — none of which belongs in a public repository. Keep them
 # locally; they are the source material, not the product.
-plan.md
-project-status.md
-01-github-profile-e-growth.md
-notes/
+# Anchored at root on purpose: a bare `plan.md` also hides skill assets
+# (e.g. ninety-day-onboarding/assets/plan.md).
+/plan.md
+/project-status.md
+/01-github-profile-e-growth.md
+/notes/
 
 # Personal working notes. Not sensitive — local-testing.md is a maintainer
 # runbook that contains absolute paths from this machine. If it ever gets
 # generalised, it belongs in CONTRIBUTING.md rather than here.
-local-testing.md
+/local-testing.md
 
 # The E2E prompt library. Kept local on purpose: published trigger prompts
 # stop being a fair test, because anyone tuning a description against them
 # is optimising for the test set rather than for real users.
 # The RULE that maintains it lives in AGENTS.md and IS committed, so any
 # agent in any session recreates this file if it is missing.
-local-testing-scripts.md
+/local-testing-scripts.md
+
+# Local harness state. Matt's repo ignores `.claude` for the same reason:
+# marketplace add / plugin install write project settings here.
+# Do NOT ignore `.claude-plugin/` or `.codex-plugin/` — those are the
+# public channel-B and channel-C manifests.
+/.claude/
+/.cursor/
+/.codex/
+skills-lock.json
+
+# Secrets
+.env
+.env.*
 
 # OS / editor
 .DS_Store

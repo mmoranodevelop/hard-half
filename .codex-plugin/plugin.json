@@ -1,0 +1,6 @@
+{
+  "name": "hard-half",
+  "version": "1.0.0",
+  "description": "Skills for the hard half of professional work: the decisions, delivery, communication, and judgment that writing code never was.",
+  "skills": "./skills/"
+}

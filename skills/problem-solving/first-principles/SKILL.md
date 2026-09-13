@@ -45,6 +45,16 @@ This protocol is expensive. Run it when at least one of these holds:
 
 If the problem merely needs implementing, debugging, or a known best practice, **say so and stop.** Running this on a solved problem produces an expensive re-derivation of the textbook, and the user pays for it in time and attention.
 
+If they are asking whether an idea, feature, PRD, or proposal *creates value* — who hurts, who pays, whether anyone will adopt it — that is `value-problem-solver`, not this protocol. A value pass will not compute a floor.
+
+If they have (or need) one official unsolved *claim* — millennial, prize-grade, safety or legal-grade — and false certainty would be fatal, that is `verified-hard-problem`. This protocol still classifies the wall; that one locks the statement, swarms lemmas, and refuses unverified "solved".
+
+If the stated objective itself may be a decoy — a fix already shipped and nobody's Monday changed, or nobody can say who asserted the ticket — that is `ghost-problem`. This protocol attacks a real stuck objective.
+
+If every option on the table is the same option written differently, and the field may be missing a coordinate, that is `missing-axis` before rebuilding on the current manifold.
+
+If several locally-green workstreams cannot be true at once, that is `empty-and`. A floor on one objective will not exhibit the empty intersection.
+
 ## Division of labour
 
 You supply structure. The user supplies reality. Being explicit about the split is what keeps the analysis from becoming confident fiction, because the failure mode here is not bad reasoning — it is good reasoning applied to invented numbers.

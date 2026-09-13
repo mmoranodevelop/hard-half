@@ -1,0 +1,28 @@
+# Default glass kit — carousel / post / infographic.
+# Fill lockup from the user. Do not invent a new palette per post.
+id: default
+name: Default
+mode: dark-default
+ink: "#111318"
+cream: "#F5F3EE"
+gray: "#747B86"
+accent: "#FF4F32"
+peach: "#FFB59F"
+cyan: "#A8E9E6"
+sans: "Instrument Sans"
+serif: "Instrument Serif"   # italic only, for ONE keyword
+monogram: "XX"
+lockup_name: "YOUR NAME"
+lockup: "XX | YOUR NAME"  # monogram in accent, name in cream, top-left
+canvas_default: ink
+canvas_alt: cream
+grain: 0.08
+glass: "rounded 28px, fill ink at 55% opacity, blur 20, 1px accent inner-glow top/left, 1px cream 20% bottom/right"
+bokeh: "soft peach + cyan + accent pills, heavily blurred, behind glass"
+arrow: "thin accent ↗ or →"
+palette_dots: "accent, cream, gray — bottom-left, optional on cover + CTA"
+photo: "user-supplied only; never generate a likeness"
+notes: >
+  Default for carousels, feed posts, infographics: dark grain + glass cards
+  + one Instrument Serif italic keyword in accent. Light cream slides exist
+  for contrast posts, not as the carousel master. Monogram = the user's initials.

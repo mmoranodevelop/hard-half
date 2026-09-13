@@ -1,0 +1,8 @@
+# Decision [n] — [project] steering [date]
+Decision (one sentence, verb): [ ]
+D in the room: [ ]     Cost of delay: [ ]
+Options: YES / NO / CUT: [ ]
+Recommend: [ ] because [one line]
+If yes, capacity: [names / money]
+If no: [what happens]
+Close this sitting: Y / N     If N, follow-up owner/date: [ ]

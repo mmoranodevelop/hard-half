@@ -6,7 +6,7 @@ This repo converts delivery experience into public material. The characteristic 
 
 Three classes of file are gitignored and must stay that way.
 
-**Planning documents** — `plan.md`, `project-status.md`, `01-github-profile-e-growth.md`, `notes/`.
+**Planning documents** — `/plan.md`, `/project-status.md`, `/01-github-profile-e-growth.md`, `/notes/` (repo root only). A bare `plan.md` rule also hides skill assets with that name.
 
 They discuss employer context, IP boundaries, and launch strategy. They are the source material, not the product. `plan.md` in particular contains an explicit assessment of what may and may not be extracted from an employer — exactly the reasoning that must not be public.
 

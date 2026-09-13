@@ -1,0 +1,74 @@
+# Empty core template — copy to instances/<identity_key>/core.yaml
+# Person-specific. Never paste filled values back into SKILL.md.
+schema_version: 1
+kind: core
+blueprint_id: "<identity_key>.core.v1"
+identity_key: ""
+overlay_id: null
+extends: null
+version: 1
+status: draft                    # draft | confirmed | deprecated
+lang: [it, en]
+created_at: ""
+updated_at: ""
+source_session: ""
+
+identity:
+  display_name: null             # omit if the file might be synced
+  languages: [it, en]
+  notes: ""
+  voice_one_liner: ""            # "I [verb] like [concrete], and I never [attractive failure]."
+
+relationship_register:
+  formality: 3                   # 1 casual … 5 ceremonial
+  warmth: 3                      # 1 cold … 5 affectionate
+  directness: 3                  # 1 oblique … 5 blunt
+  humor: 2
+  address_form: "you"            # EN you | IT tu | lei | voi
+  address_form_caps_lei: false
+  sounds_like: ""
+  sounds_unlike: ""
+
+this_not_that:
+  - are: ""
+    not: ""
+    overshoot: ""
+
+mechanics:
+  punctuation:
+    em_dash: rare                # never | rare | habitual
+    ellipsis: rare
+    exclamation: rare
+    semicolon: rare
+    oxford_comma: true
+    space_before_punct: false
+  emoji:
+    default: none                # none | rare | ok
+    by_channel: {}
+    max_per_message: 0
+    placement: end               # end | inline
+    never_as_words: true
+    never_in: [legal, bad-news, errors]
+  contractions: all              # all | positive-only | none
+  paragraphing: ""
+  capitalization: sentence
+  fragments_ok: true
+  sentence_length_band: ""       # e.g. "8–18 words, bursts of 4"
+
+hedging_posture: ""
+humor_policy: "if unsure, straight face"
+point_of_view: ""                # what a generic professional would not say
+
+greetings: []
+signoffs: []
+
+do: []
+do_not: []
+forbidden_phrases: []            # {phrase, replace_with, evidence}
+
+lexical_tells: []
+example_pairs: []                # {less_preferred, preferred, annotation, lang, speech_act}
+
+load:
+  assemble_order: [identity, mechanics, this_not_that, do, pairs]
+  max_pairs_in_prompt: 4
