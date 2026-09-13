@@ -7,8 +7,7 @@
 
 ### Skills for the half of the job that isn't writing code
 
-<!-- Official live-count badge (`https://skills.sh/b/mmoranodevelop/hard-half`) lights up after the public repo exists and the first `npx skills add`. Until then the local badge still goes to the catalog page. -->
-[![skills.sh](assets/badge-skills-sh.svg)](https://skills.sh/mmoranodevelop/hard-half)
+[![skills.sh](https://skills.sh/b/mmoranodevelop/hard-half)](https://skills.sh/mmoranodevelop/hard-half)
 
 Ask a coding agent a hard question and it retrieves the consensus answer. That is what it is good at — consensus is what its training data is dense in.
 
