@@ -126,7 +126,7 @@ On disk: `skills/<category>/<name>/`. Each bucket has a `README.md`. [`find-skil
 | [writing](skills/writing/README.md) | 10 | Voice, memo, conversation |
 | [branding](skills/branding/README.md) | 5 | Bio, positioning, calendar |
 | [learning](skills/learning/README.md) | 5 | Turn a source into a method |
-| [m-and-a](skills/m-and-a/README.md) | 20 | Day-1, TSA, talent, brand after close |
+| [mergers-acquisitions](skills/mergers-acquisitions/README.md) | 20 | Day-1, TSA, talent, brand after close |
 
 ## Design principles
 

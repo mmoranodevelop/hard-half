@@ -123,7 +123,7 @@ _How to acquire a method and turn it into something transferable._
 - `source-to-competence` — Turn a book, paper, document, or video into concept objects a person can actually remember, then (if asked) into a practice playbook that builds competence.
 - `team-method-transfer` — teaching a method to a human team in one session plus a 2-week practice loop.
 
-## m-and-a
+## mergers-acquisitions
 
 _Post-close integration: product, people, stack, brand, and Day-1._
 

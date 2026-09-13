@@ -18,7 +18,7 @@ Thanks for considering it. This repo has a narrow bar, and stating it up front s
    npx skills init your-skill-name
    ```
 
-   Then move it to `skills/<category>/your-skill-name/` — pick an existing category or add one. Current: `accounts`, `branding`, `commercial`, `comms`, `delivery`, `documents`, `finance`, `learning`, `m-and-a`, `management`, `problem-solving`, `productivity`, `project`, `strategy`, `writing`.
+   Then move it to `skills/<category>/your-skill-name/` — pick an existing category or add one. Current: `accounts`, `branding`, `commercial`, `comms`, `delivery`, `documents`, `finance`, `learning`, `mergers-acquisitions`, `management`, `problem-solving`, `productivity`, `project`, `strategy`, `writing`.
 
    For the craft itself — description as a routing rule, the information hierarchy, leading words, testing that it actually fires — use the [`create-skill`](skills/productivity/create-skill/SKILL.md) skill. It is the discipline this repo holds itself to.
 

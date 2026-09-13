@@ -1,4 +1,4 @@
-# m-and-a
+# mergers-acquisitions
 
 Post-close integration: product, people, stack, brand, and Day-1.
 
