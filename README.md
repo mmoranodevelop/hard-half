@@ -24,7 +24,22 @@ These skills are the other half of the work: the decision, the ticket, the room,
 
 ## Installation (30-second setup)
 
-Two relationships with the files. **The Claude Code plugin** installs a managed, read-only bundle that updates when the catalog ships. **[skills.sh](https://skills.sh/mmoranodevelop/hard-half)** copies editable files into your project, so you can hack on them. Pick one: installing both leaves you with every skill twice.
+Two relationships with the files. **The Claude plugin** installs a managed, read-only bundle that updates when the catalog ships — chat, Cowork, and Claude Code. **[skills.sh](https://skills.sh/mmoranodevelop/hard-half)** copies editable files into your project, so you can hack on them. Pick one: installing both leaves you with every skill twice.
+
+This catalog is not in Anthropic's official store. Add the GitHub repo as a marketplace, then install the plugin.
+
+### Claude chat and Cowork
+
+1. Open **Customize → Plugins**. In Cowork, open the Cowork tab first.
+2. In Personal plugins: **+ → Add marketplace → Add from a repository**.
+3. Paste `mmoranodevelop/hard-half` (or `https://github.com/mmoranodevelop/hard-half`).
+4. Install **The Hard Half**.
+
+Do not paste `/plugin` into a chat. That command is Claude Code only and adds nothing here.
+
+Paid plans (Pro, Max, Team, Enterprise). Skills need *Code execution and file creation* on (`Settings → Capabilities`, or org Skills settings on Team/Enterprise). Type `/` or `+` in the composer to invoke one — not `/hard-half:find-skill`.
+
+One skill without the plugin: zip its folder and upload it under **Customize → Skills → + → Create skill → Upload a skill**.
 
 ### Claude Code
 
@@ -57,14 +72,14 @@ I need the skill for [the room / the artifact / the decision].
 
 [`find-skill`](skills/productivity/find-skill/SKILL.md) names the one that owns that job — and the two neighbours it is not.
 
-These follow the [Agent Skills](https://agentskills.io) open standard. [A lot of clients load them](https://agentskills.io/clients): Claude Code, ChatGPT and Codex, Cursor, GitHub Copilot, Gemini CLI, Amp, OpenCode, Goose, and others. Claude Code is the only one with a plugin store. Everywhere else is a directory: `~/.agents/skills/` (user) and `.agents/skills/` (project). The CLI writes there.
+These follow the [Agent Skills](https://agentskills.io) open standard. [A lot of clients load them](https://agentskills.io/clients): Claude Code, Claude chat and Cowork, ChatGPT and Codex, Cursor, GitHub Copilot, Gemini CLI, Amp, OpenCode, Goose, and others. Claude and Codex have a plugin store. Everywhere else is a directory: `~/.agents/skills/` (user) and `.agents/skills/` (project). The CLI writes there.
 
 | | Plugin (Claude / Codex) | `skills` CLI |
 |---|---|---|
 | **What happens** | A **managed bundle** | Files are **copied** into your project |
 | **Editing** | Read-only, always current | Yours. Fork it |
 | **Updates** | Automatic / marketplace | `npx skills update` |
-| **Invocation** | `/hard-half:find-skill` | `/find-skill` |
+| **Invocation** | Chat/Cowork: `/` or `+`. Code: `/hard-half:find-skill` | `/find-skill` |
 | **Choose it when** | You want them to just work | You will make them yours |
 
 ## Five failures these are for
